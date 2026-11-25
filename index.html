@@ -381,8 +381,89 @@ item.quantidade +
 mensagem += "%0ATotal: R$ " +
 total.toFixed(2).replace(".",",");
 
-window.open(
-"<a href="https://wa.me/5511997607681?text=" ...
+<script>
+
+let pedido = [];
+let total = 0;
+
+function adicionar(botao,nome,preco){
+
+    const card = botao.closest('.card');
+
+    const quantidade =
+    parseInt(card.querySelector('.qtd').value) || 1;
+
+    pedido.push({
+        nome,
+        quantidade,
+        preco
+    });
+
+    total += preco * quantidade;
+
+    document.getElementById('total').innerHTML =
+    'Total: R$ ' + total.toFixed(2).replace('.', ',');
+
+    alert('Produto adicionado!');
+}
+
+function enviarWhats(){
+
+    if(pedido.length === 0){
+        alert('Adicione produtos ao pedido.');
+        return;
+    }
+
+    let mensagem =
+    'PEDIDO 360 ECOMM - LINHA FIT\n\n';
+
+    pedido.forEach(item => {
+
+        mensagem +=
+        item.nome +
+        ' | Quantidade: ' +
+        item.quantidade +
+        '\n';
+
+    });
+
+    mensagem +=
+    '\nTotal: R$ ' +
+    total.toFixed(2).replace('.', ',');
+
+    const url =
+    'https://wa.me/5511997607681?text=' +
+    encodeURIComponent(mensagem);
+
+    window.open(url,'_blank');
+}
+
+function filtrarProdutos(){
+
+    let filtro =
+    document
+    .getElementById('busca')
+    .value
+    .toUpperCase();
+
+    let produtos =
+    document.querySelectorAll('.produto');
+
+    produtos.forEach(produto => {
+
+        let texto =
+        produto.innerText.toUpperCase();
+
+        produto.style.display =
+        texto.includes(filtro)
+        ? 'block'
+        : 'none';
+
+    });
+
+}
+
+</script>
 
 }
 
