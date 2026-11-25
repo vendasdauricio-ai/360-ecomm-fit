@@ -3,101 +3,307 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>360 ECOMM - Linha FIT</title>
+
+<title>360 ECOMM | Linha FIT</title>
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
 body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#f4f4f4;
+background:#f4f4f4;
+color:#222;
 }
 
 header{
-    background:#10372F;
-    color:white;
-    padding:40px;
-    text-align:center;
+background:#10372F;
+color:white;
+padding:50px 20px;
+text-align:center;
 }
 
-main{
-    max-width:1200px;
-    margin:auto;
-    padding:30px;
+header h1{
+font-size:52px;
+margin-bottom:10px;
+}
+
+header p{
+font-size:18px;
+margin:5px 0;
+}
+
+.banner{
+background:white;
+padding:40px;
+text-align:center;
+}
+
+.banner h2{
+font-size:42px;
+color:#10372F;
+margin-bottom:15px;
+}
+
+.banner p{
+max-width:900px;
+margin:auto;
+font-size:18px;
+line-height:1.7;
+}
+
+.busca{
+padding:20px;
+max-width:1200px;
+margin:auto;
+}
+
+.busca input{
+width:100%;
+padding:18px;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:16px;
+}
+
+.produtos{
+max-width:1200px;
+margin:auto;
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+padding-bottom:120px;
 }
 
 .card{
-    background:white;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 3px 15px rgba(0,0,0,.1);
 }
 
 .card img{
-    width:100%;
-    height:300px;
-    object-fit:cover;
+width:100%;
+height:240px;
+object-fit:cover;
 }
 
 .info{
-    padding:20px;
+padding:20px;
+}
+
+.codigo{
+font-size:13px;
+color:#777;
+margin-bottom:10px;
+}
+
+.nome{
+font-size:26px;
+font-weight:bold;
+margin-bottom:10px;
+color:#10372F;
 }
 
 .preco{
-    color:#10372F;
-    font-size:28px;
-    font-weight:bold;
+font-size:34px;
+font-weight:bold;
+color:#10372F;
+margin-bottom:15px;
 }
 
-.botao{
-    display:inline-block;
-    padding:15px 25px;
-    background:#10372F;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
+.qtd{
+width:100%;
+padding:12px;
+border:1px solid #ddd;
+border-radius:8px;
+margin-bottom:15px;
 }
+
+.btn{
+width:100%;
+background:#10372F;
+color:white;
+border:none;
+padding:14px;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.carrinho{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:white;
+border-top:1px solid #ddd;
+padding:15px;
+box-shadow:0 -3px 10px rgba(0,0,0,.1);
+}
+
+.carrinho-conteudo{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.total{
+font-size:26px;
+font-weight:bold;
+color:#10372F;
+}
+
+.btn-whats{
+background:#25D366;
+color:white;
+padding:15px 25px;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold;
+}
+
+@media(max-width:768px){
+
+header h1{
+font-size:36px;
+}
+
+.banner h2{
+font-size:30px;
+}
+
+.carrinho-conteudo{
+flex-direction:column;
+gap:15px;
+}
+
+}
+
 </style>
-
 </head>
+
 <body>
 
 <header>
 <h1>360 ECOMM</h1>
-<p>Catálogo Linha FIT</p>
+<p>Catálogo Linha FIT 2026</p>
 <p>WhatsApp: (11) 99656-5544</p>
 <p>ricardo@dauricio.com.br</p>
 </header>
 
-<main>
+<section class="banner">
 
-<div class="card">
+<h2>Linha FIT</h2>
 
-<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80">
+<p>
+Soluções em móveis para hotéis, restaurantes,
+bares e ambientes corporativos.
+Qualidade em cada detalhe,
+design autoral, conforto e acabamento premium.
+</p>
+
+</section>
+
+<section class="busca">
+
+<input
+type="text"
+id="busca"
+placeholder="Buscar produto..."
+onkeyup="filtrarProdutos()">
+
+</section>
+
+<section class="produtos" id="produtos">
+
+<div class="card produto">
+
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80">
 
 <div class="info">
 
-<h2>Estante Linha FIT</h2>
+<div class="codigo">ECEI1053</div>
+<div class="nome">Estante Linha FIT</div>
+<div class="preco">R$ 135,42</div>
 
-<p>Código: ECEI1455</p>
+<input class="qtd" type="number" min="1" value="1">
 
-<div class="preco">
-R$ 192,19
-</div>
-
-<br>
-
-<a
-class="botao"
-href="https://wa.me/5511996565544"
-target="_blank">
-Solicitar Orçamento
-</a>
+<button class="btn" onclick="adicionar('Estante ECEI1053',135.42)">
+Adicionar ao Pedido
+</button>
 
 </div>
 
 </div>
 
-</main>
+<div class="card produto">
 
-</body>
-</html>
+<img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80">
+
+<div class="info">
+
+<div class="codigo">ECEI1063</div>
+<div class="nome">Estante Linha FIT</div>
+<div class="preco">R$ 193,37</div>
+
+<input class="qtd" type="number" min="1" value="1">
+
+<button class="btn" onclick="adicionar('Estante ECEI1063',193.37)">
+Adicionar ao Pedido
+</button>
+
+</div>
+
+</div>
+
+<div class="card produto">
+
+<img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80">
+
+<div class="info">
+
+<div class="codigo">ECME612015</div>
+<div class="nome">Mesa Linha FIT</div>
+<div class="preco">R$ 137,00</div>
+
+<input class="qtd" type="number" min="1" value="1">
+
+<button class="btn" onclick="adicionar('Mesa ECME612015',137)">
+Adicionar ao Pedido
+</button>
+
+</div>
+
+</div>
+
+<div class="card produto">
+
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80">
+
+<div class="info">
+
+<div class="codigo">MESA LIGHT</div>
+<div class="nome">Mesa Light</div>
+<div class="preco">R$ 279,00</div>
+
+<input class="qtd" type="number" min="1" value="1">
+
+<button class="btn" onclick="adicionar('Mesa Light',279)">
+Adicionar ao Pedido
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<div
